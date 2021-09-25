@@ -25,6 +25,7 @@ module.exports = function (app) {
       if (translation == text) {
         return res.send({text, translation: "Everything looks good to me!"});
       } else {
+        console.log("translation: " + translation);
         return res.send({text, translation});
       }
     });
