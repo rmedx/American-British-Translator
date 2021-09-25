@@ -31,7 +31,7 @@ class Translator {
 
     translate(inputText, locale) {
         let text = inputText;
-        console.log("text: " + text);
+        console.log("text before translate: " + text);
         if (locale == "american-to-british") {
             for (const [key, value] of Object.entries(americanOnly)) {
                 if (text.toLowerCase().includes(key)) {
@@ -79,7 +79,7 @@ class Translator {
             let timeregex = /([0-9]{1,2}).([0-9]{2})(?![0-9])/g
             text = text.replaceAll(timeregex, '<span class="highlight">$1:$2</span>');
         }
-        console.log(text);
+        console.log("text after translate: " + text);
         return text;
     }
 }
