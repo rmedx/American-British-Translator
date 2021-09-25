@@ -23,7 +23,7 @@ class Translator {
 
     removeHighlight(text) {
         let regex = /<[^<>]*>/g;
-        return text.replaceAll(regex, "");
+        return text.replace(regex, "");
     }
 
     translate(inputText, locale) {
