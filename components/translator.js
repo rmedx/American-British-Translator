@@ -35,17 +35,17 @@ class Translator {
         if (locale == "american-to-british") {
             for (const [key, value] of Object.entries(americanOnly)) {
                 if (text.toLowerCase().includes(key)) {
-                    text = text.replaceAll(this.regexMaker(key), (match, offset, text) => this.upperCaser(match, offset, text, value));
+                    text = text.replace(this.regexMaker(key), (match, offset, text) => this.upperCaser(match, offset, text, value));
                 }
             }
             for (const [key, value] of Object.entries(americanToBritishSpelling)) {
                 if (text.toLowerCase().includes(key)) {
-                    text = text.replaceAll(this.regexMaker(key), (match, offset, text) => this.upperCaser(match, offset, text, value));
+                    text = text.replace(this.regexMaker(key), (match, offset, text) => this.upperCaser(match, offset, text, value));
                 }
             }
             for (const [key, value] of Object.entries(americanToBritishTitles)) {
                 if (text.toLowerCase().includes(key)) {
-                    text = text.replaceAll(this.titleRegexMaker(key), (match, offset, text) => this.upperCaser(match, offset, text, value));
+                    text = text.replace(this.titleRegexMaker(key), (match, offset, text) => this.upperCaser(match, offset, text, value));
                 }
             }
             // for (const [key, value] of Object.entries(britishOnly)) {
@@ -54,21 +54,21 @@ class Translator {
             //     }
             // }
             let timeregex = /([0-9]{1,2}):([0-9]{2})(?![0-9])/g
-            text = text.replaceAll(timeregex, '<span class="highlight">$1.$2</span>');
+            text = text.replace(timeregex, '<span class="highlight">$1.$2</span>');
         } else {
             for (const [key, value] of Object.entries(britishOnly)) {
                 if (text.toLowerCase().includes(key)) {
-                    text = text.replaceAll(this.regexMaker(key), (match, offset, text) => this.upperCaser(match, offset, text, value));
+                    text = text.replace(this.regexMaker(key), (match, offset, text) => this.upperCaser(match, offset, text, value));
                 }
             }
             for (const [key, value] of Object.entries(americanToBritishSpelling)) {
                 if (text.toLowerCase().includes(value)) {
-                    text = text.replaceAll(this.regexMaker(value), (match, offset, text) => this.upperCaser(match, offset, text, key));
+                    text = text.replace(this.regexMaker(value), (match, offset, text) => this.upperCaser(match, offset, text, key));
                 }
             }
             for (const [key, value] of Object.entries(americanToBritishTitles)) {
                 if (text.toLowerCase().includes(value)) {
-                    text = text.replaceAll(this.regexMaker(value), (match, offset, text) => this.upperCaser(match, offset, text, key));
+                    text = text.replace(this.regexMaker(value), (match, offset, text) => this.upperCaser(match, offset, text, key));
                 }
             }
             // for (const [key, value] of Object.entries(americanOnly)) {
@@ -77,7 +77,7 @@ class Translator {
             //     }
             // }
             let timeregex = /([0-9]{1,2}).([0-9]{2})(?![0-9])/g
-            text = text.replaceAll(timeregex, '<span class="highlight">$1:$2</span>');
+            text = text.replace(timeregex, '<span class="highlight">$1:$2</span>');
         }
         console.log("text after translate: " + text);
         return text;
